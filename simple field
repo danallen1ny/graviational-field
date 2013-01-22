@@ -1,0 +1,155 @@
+library(rgl)
+
+x_m<-4
+
+s1<-20
+
+s2<- 100
+
+c<-1 #don't change
+
+c2<-.3
+
+m<-7
+
+min2<-8
+
+plot3d(0,0,0,col='white',xlab='',ylab='',zlab='',box=FALSE,axes=FALSE)
+
+ 
+
+ 
+
+ 
+
+ 
+
+for (i in seq(from=-x_m,to=x_m,length=s1)) {
+
+x<-rep(i,s2)
+
+#ep<-(1/(c2*m)-i^2)^.5
+
+y<- seq(from=0,to=x_m,length=s2)
+
+z<- -1/(c2*(x^2+y^2)^c)
+
+plot3d(x[z> -m],y[z> -m],z[z> -m],add=TRUE,type='l')
+
+#plot3d(x,y,z,add=TRUE,type='l')
+
+ 
+
+y<-seq(from=-x_m,to=0,length=s2)
+
+z<- -1/(c2*(x^2+y^2)^c)
+
+ 
+
+plot3d(x[z> -m],y[z> -m],z[z> -m],add=TRUE,type='l')
+
+ 
+
+ 
+
+} 
+
+ 
+
+ 
+
+ 
+
+for (i in seq(from=-x_m,to=x_m,length=s1)) {
+
+y<-rep(i,s2)
+
+#ep<-(1/(c2*m)-i^2)^.5
+
+x<- seq(from=0,to=x_m,length=s2)
+
+z<- -1/(c2*(x^2+y^2)^c)
+
+plot3d(x[z> -m],y[z> -m],z[z> -m],add=TRUE,type='l')
+
+#plot3d(x,y,z,add=TRUE,type='l')
+
+ 
+
+x<-seq(from=-x_m,to=0,length=s2)
+
+z<- -1/(c2*(x^2+y^2)^c)
+
+ 
+
+plot3d(x[z> -m],y[z> -m],z[z> -m],add=TRUE,type='l')
+
+ 
+
+ 
+
+} 
+
+ 
+
+asx<- -4.5
+
+asy<- -4.5
+
+asz<- 0
+
+ 
+
+al1<- .75
+
+al2<- .125
+
+ 
+
+td<- .5
+
+ 
+
+ 
+
+plot3d(c(asx,asx+al1),c(asy,asy),c(asz,asz),type='l',add=TRUE)
+
+plot3d(c(asx+al1,asx+al1-al2),c(asy,asy-al2),c(asz,asz),type='l',add=TRUE)
+
+plot3d(c(asx+al1,asx+al1-al2),c(asy,asy+al2),c(asz,asz),type='l',add=TRUE)
+
+ 
+
+plot3d(c(asx,asx),c(asy,asy+al1),c(asz,asz),type='l',add=TRUE)
+
+plot3d(c(asx,asx-al2),c(asy+al1,asy+al1-al2),c(asz,asz),type='l',add=TRUE)
+
+plot3d(c(asx,asx+al2),c(asy+al1,asy+al1-al2),c(asz,asz),type='l',add=TRUE)
+
+ 
+
+plot3d(c(asx,asx),c(asy,asy),c(asz,asz-al1),type='l',add=TRUE)
+
+plot3d(c(asx,asx),c(asy,asy-al2),c(asz-al1,asz-al1+al2),type='l',add=TRUE)
+
+plot3d(c(asx,asx),c(asy,asy+al2),c(asz-al1,asz-al1+al2),type='l',add=TRUE)
+
+ 
+
+text3d(x=c(asx+al1/2,asx,asx-td),
+
+   y=c(asy-td,asy+al1/2,asy),
+
+   z=c(asz,asz-td,asz-al1/2),
+
+   texts=c('x','y','z'),
+
+   cex=.75
+
+   )
+
+ 
+
+setwd('~/Desktop/mba/nyu/essay3/R')
+
+rgl.snapshot(filename='buttface.png',fmt='png')
